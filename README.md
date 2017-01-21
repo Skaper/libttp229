@@ -14,14 +14,13 @@ import libttp229 as sens
 
 class Sensitivity():
     def __init__(self):
-        self.isNewData = False
-        self.maxKey = 16
+        self.maxKey = 15
         self.keyArray = [0 for x in xrange(self.maxKey)]
+        
     def readData(self):
-        index = 0
         data = sens.readData(0x57, 2) + 0b10000000000000000
-        for x in bin(data)[3:]:
-            self.keyArray[self.maxKey - index] = x
-            index += 1
+        for index, valume in enumerate(bin(data)[3:]):
+            self.keyArray[self.maxKey - index] = valume
+            
         return self.keyArray
 ```
